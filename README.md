@@ -1,21 +1,20 @@
 # Minecraft-Bedrock-Formation-Finder-1.18
-Tool to find any bedrock formation in a 1.18 minecraft world.
+Tool to find any bedrock formation in a 1.18 (or more recent, probably) minecraft world.
 
 ## Usage
-`java -jar bedrockformation.jar seed x:z type [x,y,z:bedrock]`
+You need to build a jar file first: open with IntelliJ, Build -> Build Artifacts.
+You most likely want to change the searchspace, you can do so by editing min or max x, y, z in Main.java.
+
+`java -jar bedrockformation.jar seed bedrocktype /path/to/file.txt`
 - seed (long)
-  - Seed of your World
-- x, z (int)
-  - X and Z search center
-- type (enum)
+  - Seed of the World
+- bedrocktype (enum)
   - floor -> Searches on Bedrock floor
   - roof -> Searches on Bedrock roof
-- Array of formation
-  - x, y, z
-    - Location of state
-  - bedrock (enum)
-    - 1 -> Bedrock wanted
-    - 0 -> No Bedrock wanted
+- file path
+  contents: x y z shouldBeBedrock
+  - shouldBeBedrock -> true for bedrock, false otherwise (deepslate, air, anything)
+  see blocks.txt
 
-Sample:
-`java -jar bedrockformation.jar 124352345 0:0 floor 0,-63,0:1 1,-62,0:1 0,-63,1:0`
+Example:
+`java -jar bedrockformation.jar -6710424978534945632 floor C:\javaprojects\Minecraft-Bedrock-Formation-Finder-1.18\blocks.txt`
